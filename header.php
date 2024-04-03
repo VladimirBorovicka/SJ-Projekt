@@ -3,13 +3,13 @@
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
-                <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-                <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+                <li><a href="#"><i class="fa fa-phone"></i> +421-918-952-721</a></li>
+                <li><a href="#"><i class="fa fa-envelope-o"></i> vlado11159@gmail.com</a></li>
+                <li><a href="https://maps.app.goo.gl/s5mhRMP9q9NawjMR7" target="_blank"><i class="fa fa-map-marker"></i>Slovenská 15</a></li>
             </ul>
             <ul class="header-links pull-right">
-                <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                <li><a href="#"><i class="fa fa-eur"></i> EUR</a></li>
+                <li><a href="register.php"><i class="fa fa-user-o"></i> My Account</a></li>
             </ul>
         </div>
     </div>
@@ -37,8 +37,16 @@
                         <form>
                             <select class="input-select">
                                 <option value="0">All Categories</option>
-                                <option value="1">Category 01</option>
-                                <option value="1">Category 02</option>
+                                <option value="1">Action</option>
+                                <option value="2">Arcade</option>
+                                <option value="3">Fighting</option>
+                                <option value="4">FPS</option>
+                                <option value="5">RPG</option>
+                                <option value="6">Simulation</option>
+                                <option value="7">Sports</option>
+                                <option value="8">Strategy</option>
+
+                                
                             </select>
                             <input class="input" placeholder="Search here">
                             <button class="search-btn">Search</button>
@@ -55,7 +63,7 @@
                             <a href="#">
                                 <i class="fa fa-heart-o"></i>
                                 <span>Your Wishlist</span>
-                                <div class="qty">2</div>
+                                <div class="qty">0</div>
                             </a>
                         </div>
                         <!-- /Wishlist -->
@@ -65,9 +73,9 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Your Cart</span>
-                                <div class="qty">3</div>
+                                <div class="qty">0</div>
                             </a>
-                            <div class="cart-dropdown">
+                            <!--<div class="cart-dropdown">
                                 <div class="cart-list">
                                     <div class="product-widget">
                                         <div class="product-img">
@@ -99,7 +107,7 @@
                                     <a href="#">View Cart</a>
                                     <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                         <!-- /Cart -->
 
@@ -131,12 +139,11 @@
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Hot Deals</a></li>
+                <li><a href="#">Store</a></li>
+                <li><a href="#">Library</a></li>
                 <li><a href="#">Categories</a></li>
-                <li><a href="#">Laptops</a></li>
-                <li><a href="#">Smartphones</a></li>
-                <li><a href="#">Cameras</a></li>
-                <li><a href="#">Accessories</a></li>
+                <li><a href="#">Hot Deals</a></li>
+                <li><a href="#">New</a></li>
             </ul>
             <!-- /NAV -->
         </div>
