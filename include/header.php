@@ -1,5 +1,4 @@
 <header>
-    <!-- TOP HEADER -->
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
@@ -12,14 +11,11 @@
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-    // Check if user is logged in
     if (isset($_SESSION['username'])) {
-        // User is logged in, display "My Account"
         echo '<li><a href="account.php"><i class="fa fa-user circle"></i> ' . $_SESSION['username'] . '</a>';
         echo '</a></li>';
-        echo '<li><a href="logout.php"><i class="fa fa-sign-out"></i> Logout</a></li>'; // Logout button
+        echo '<li><a href="logout.php"><i class="fa fa-sign-out"></i> Logout</a></li>';
     } else {
-        // User is not logged in, display "Login"
         echo '<li><a href="login.php"><i class="fa fa-user-o"></i> Login</a></li>';
         echo '</a></li>';
     }
@@ -27,15 +23,10 @@
 </ul>
         </div>
     </div>
-    <!-- /TOP HEADER -->
 
-    <!-- MAIN HEADER -->
     <div id="header">
-        <!-- container -->
         <div class="container">
-            <!-- row -->
             <div class="row">
-                <!-- LOGO -->
                     <div class="col-md-3">
                         <div class="header-logo">
                             <a href="index.php" class="logo">
@@ -43,9 +34,7 @@
                             </a>
                         </div>
                     </div>
-                <!-- /LOGO -->
 
-                <!-- SEARCH BAR -->
                 <div class="col-md-6">
                     <div class="header-search">
                         <form>
@@ -67,12 +56,9 @@
                         </form>
                     </div>
                 </div>
-                <!-- /SEARCH BAR -->
 
-                <!-- ACCOUNT -->
                 <div class="col-md-3 clearfix">
                     <div class="header-ctn">
-                        <!-- Cart -->
                         <div class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
@@ -113,43 +99,30 @@
                                 </div>
                             </div>-->
                         </div>
-                        <!-- /Cart -->
 
-                        <!-- Menu Toogle -->
                         <div class="menu-toggle">
                             <a href="#">
                                 <i class="fa fa-bars"></i>
                                 <span>Menu</span>
                             </a>
                         </div>
-                        <!-- /Menu Toogle -->
                     </div>
                 </div>
-                <!-- /ACCOUNT -->
             </div>
-            <!-- row -->
         </div>
-        <!-- container -->
     </div>
-    <!-- /MAIN HEADER -->
 </header>
 
 
 <nav id="navigation">
-    <!-- container -->
     <div class="container">
-        <!-- responsive-nav -->
         <div id="responsive-nav">
-            <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="store.php">Store</a></li>
                 <?php if(isset($_SESSION['username'])): ?>
                     <li><a href="library.php">Library</a></li>
                 <?php endif; ?>
-            <!-- /NAV -->
         </div>
-        <!-- /responsive-nav -->
     </div>
-    <!-- /container -->
 </nav>
