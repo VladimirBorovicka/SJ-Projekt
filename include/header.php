@@ -144,7 +144,9 @@
             <ul class="main-nav nav navbar-nav">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="store.php">Store</a></li>
-                <li><a href="#">Library</a></li>
+                <?php if(isset($_SESSION['username'])): ?>
+                    <li><a href="library.php">Library</a></li>
+                <?php endif; ?>
             <!-- /NAV -->
         </div>
         <!-- /responsive-nav -->
