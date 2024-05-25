@@ -1,3 +1,7 @@
+<?php
+require_once "include/connectDB.php";
+require_once "include/classes.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -36,9 +40,10 @@
 
     </head>
 	<body>
-		<!-- HEADER -->
-		<?php include("header.php"); ?>
-		<!-- /HEADER -->
+
+		<?php
+		include_once 'include/header.php';
+		?>
 
 		<!-- SECTION -->
 		<div class="section">
@@ -848,9 +853,9 @@
 		</div>
 		<!-- /NEWSLETTER -->
 
-		<!-- FOOTER -->
-		<?php include("footer.php"); ?>
-		<!-- /FOOTER -->
+		<?php
+		include 'include/footer.php';
+		?>
 
 		<!-- jQuery Plugins -->
 		<script src="js/jquery.min.js"></script>
