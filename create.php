@@ -1,5 +1,5 @@
 <?php
-require_once "connectDB.php";
+require_once "include/connectDB.php";
 require_once "include/classes.php";
 
 
@@ -61,7 +61,10 @@ if (isset($_POST['submit'])) {
 
     </head>
 	<body>
-		<?php include 'header.php'; ?>
+
+		<?php
+        include 'include/header.php';
+         ?>
 
         <div class="container">
             <div class="wrapper">
@@ -106,7 +109,10 @@ if (isset($_POST['submit'])) {
     </div>
 
 
-		<?php include 'footer.php'; ?>
+		<?php
+        include 'include/footer.php';
+        ?>
+
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/slick.min.js"></script>
