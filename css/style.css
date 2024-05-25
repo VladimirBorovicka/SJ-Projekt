@@ -907,6 +907,10 @@ textarea.input {
   z-index: 20;
 }
 
+.product-name a {
+  color: #2B2D42;
+}
+
 .product .product-body .product-category {
   text-transform: uppercase;
   font-size: 12px;
