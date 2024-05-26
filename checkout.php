@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							</label>
 						</div>
 						<form action="checkout.php" method="post">
-							<button type="submit" class="primary-btn order-submit">Place order</button>
+							<button type="submit" class="primary-btn order-submit btn-main">Place order</button>
 						</form>
 					</div>
 				</div>

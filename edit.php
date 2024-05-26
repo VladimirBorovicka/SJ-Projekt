@@ -84,7 +84,7 @@ if (isset($_GET['id'])) {
                     <img src="<?php echo $product['image']; ?>" alt="Product Image">
                     <input type="file" class="form-control" id="image" name="image">
                 </div>
-                <button type="submit" class="btn btn-danger" name="submit">Submit</button>
+                <button type="submit" class="btn btn-main" name="submit">Submit</button>
             </form>
         </div>
     </div>
