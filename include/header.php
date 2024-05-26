@@ -88,11 +88,12 @@
     <div class="container">
         <div id="responsive-nav">
             <ul class="main-nav nav navbar-nav">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="store.php">Store</a></li>
+                <li class="<?= basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : '' ?>"><a href="index.php">Home</a></li>
+                <li class="<?= basename($_SERVER['PHP_SELF']) == 'store.php' ? 'active' : '' ?>"><a href="store.php">Store</a></li>
                 <?php if(isset($_SESSION['username'])): ?>
-                    <li><a href="library.php">Library</a></li>
+                    <li class="<?= basename($_SERVER['PHP_SELF']) == 'library.php' ? 'active' : '' ?>"><a href="library.php">Library</a></li>
                 <?php endif; ?>
+            </ul>
         </div>
     </div>
 </nav>
