@@ -67,6 +67,28 @@ class Users extends Database {
         header("location: login.php");
         exit;
     }
+
+    public function getUserData($user_id) {
+        $sql = "SELECT * FROM users WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $user_id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function editUser($username, $first_name, $last_name, $email, $password, $id) {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "UPDATE users SET username = :username, first_name = :first_name, surname = :last_name, email = :email, password = :password WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':first_name', $first_name);
+        $stmt->bindParam(':last_name', $last_name);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $hashed_password);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        header("Location: account.php");
+    }
 }
 
 class Products extends Database{
