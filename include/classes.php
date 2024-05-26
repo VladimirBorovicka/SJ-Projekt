@@ -129,15 +129,40 @@ class Products extends Database{
                 }
                 echo '</div></div>';
                 echo '<div class="add-to-cart">';
-                echo '<form action="add_to_cart.php" method="post">';
-                echo '<input type="hidden" name="product_id" value="' . $row['id'] . '">';
-                echo '<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>';
-                echo '</form>';
+
+                if (isset($_SESSION['user_id'])) {
+                    $products = new Products();
+                    $user_id = $_SESSION['user_id'];
+                    $ownedGames = $products->getOwnedGames($user_id);
+
+                    echo '<form action="add_to_cart.php" method="post">';
+                    echo '<input type="hidden" name="product_id" value="' . $row['id'] . '">';
+
+                    if (in_array($row['id'], $ownedGames)) {
+                        echo '<button type="button" disabled class="owned-btn">Already Owned</button>';
+                    } else {
+                        echo '<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>';
+                    }
+
+                    echo '</form>';
+                } else {
+                    echo '<a href="login.php"><button type="button" class="login-btn">Login to Purchase</button></a>';
+                }
+
                 echo '</div></div></div>';
             }
         } else {
             echo "No products found";
         }
+    }
+
+    public function getOwnedGames($user_id) {
+        $sql = "SELECT game_id FROM user_games WHERE user_id = :user_id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->execute();
+    
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 
     public function getRandomProducts($limit = 3) {
@@ -175,10 +200,16 @@ class Products extends Database{
     }
 
     public function deleteProduct($id) {
+        $sql = "DELETE FROM user_games WHERE game_id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
         $sql = "DELETE FROM products WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
+
         header("Location: store.php");
     }
 
@@ -321,6 +352,59 @@ class Products extends Database{
             }
     
             return array('items' => $items, 'total' => $total);
+        }
+
+        function getCartItemsHtml($cartItems) {
+            $output = '';
+
+            foreach ($cartItems['items'] as $key => $item) {
+                $output .= '<div class="order-col">';
+                $output .= '<div><a href="remove_from_cart.php?item=' . $key . '" class="text-black"><i class="fa fa-trash"></i></a> 1x ' . $item['name'] . '</div>';
+                $output .= '<div>$' . $item['price'] . '</div>';
+                $output .= '</div>';
+            }
+
+            $output .= '<div class="order-col">';
+            $output .= '<div><strong>TOTAL</strong></div>';
+            $output .= '<div><strong class="order-total">$' . $cartItems['total'] . '</strong></div>';
+            $output .= '</div>';
+
+            return $output;
+        }
+
+
+        public function getCartItemsIds() {
+            return $_SESSION['cart'];
+        }
+
+        public function getCartNumber() {
+            if (!isset($_SESSION['cart'])) {
+                $_SESSION['cart'] = array();
+            }
+            echo count($_SESSION['cart']);
+        }
+
+        public function clearCart() {
+            $_SESSION['cart'] = array();
+        }
+    }
+
+    class Order extends Database{
+        private $conn;
+
+        public function __construct() {
+            parent::__construct();
+            $this->conn = $this->getConnection();
+        }
+
+        public function createOrder($user_id, $cartItems) {
+            foreach ($cartItems as $game_id) {
+                $sql = "INSERT INTO user_games (user_id, game_id) VALUES (:user_id, :game_id)";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindParam(':user_id', $user_id);
+                $stmt->bindParam(':game_id', $game_id);
+                $result = $stmt->execute();
+            }
         }
     }
 ?>
