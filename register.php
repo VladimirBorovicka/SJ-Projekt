@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $user = new Users($conn);
+        $user = new Users();
         $result = $user->register($firstname, $surname, $username, $email, $password);
 
         if ($result === false) {
