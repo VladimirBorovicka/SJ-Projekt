@@ -1343,13 +1343,13 @@ textarea.input {
 }
 
 .store-grid li:hover {
-  background-color: #b8001f;
-  border: 1px solid #b8001f;
-  color: #FFF;
+  background-color: #FFF !important;
+  color: #ef233c !important;
+  border-color: #ef233c !important;
 }
 
 .store-grid li:hover i{
-  color: #FFF;
+  color: #ef233c;
 }
 
 .store-grid li.active {
@@ -2078,7 +2078,7 @@ textarea.input {
 }
 
 .footer-payments li a {
-  color: #15161D;
+  color: #FFF;
   font-size: 36px;
   display: block;
 }
@@ -2224,7 +2224,8 @@ textarea.input {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 15px;
+  border-radius: 5px;
+  border-bottom: solid 4px #ef233c;
 }
 
 .wrapper label, p, a, h2{
@@ -2313,6 +2314,12 @@ textarea.input {
   transition: 0.2s all;
 }
 
+.owned-btn:hover {
+  background-color: #FFF;
+  color: #ef233c;
+  border-color: #ef233c;
+}
+
 .login-btn{
   position: relative;
   border: 2px solid transparent;
@@ -2325,4 +2332,24 @@ textarea.input {
   border-radius: 40px;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
+}
+
+.btn-main {
+  position: relative;
+  border: 2px solid transparent !important;
+  height: 40px;
+  padding: 0 30px;
+  background-color: #ef233c;
+  color: #FFF !important;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 40px !important;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+}
+
+.btn-main:hover {
+  background-color: #FFF !important;
+  color: #ef233c !important;
+  border-color: #ef233c !important;
 }
