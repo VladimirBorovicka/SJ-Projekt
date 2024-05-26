@@ -129,7 +129,10 @@ class Products extends Database{
                 }
                 echo '</div></div>';
                 echo '<div class="add-to-cart">';
-                echo '<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>';
+                echo '<form action="add_to_cart.php" method="post">';
+                echo '<input type="hidden" name="product_id" value="' . $row['id'] . '">';
+                echo '<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>';
+                echo '</form>';
                 echo '</div></div></div>';
             }
         } else {
@@ -279,11 +282,45 @@ class Products extends Database{
                 echo '</div></div>';
             }
                 } else {
-                    echo "No products found";
+                    echo "You dont own any games yet!";
                 }
             } catch (PDOException $e) {
                 echo "Error: " . $e->getMessage();
             }
+        }
+    }
+
+    class Cart extends Database{
+        private $conn;
+
+        public function __construct() {
+            parent::__construct();
+            $this->conn = $this->getConnection();
+        }
+
+        public function getCartItems() {
+    
+            if (!isset($_SESSION['cart'])) {
+                $_SESSION['cart'] = array();
+            }
+    
+            $items = array();
+            $total = 0;
+    
+            foreach ($_SESSION['cart'] as $product_id) {
+                $stmt = $this->conn->prepare("SELECT * FROM products WHERE id = :id");
+                $stmt->execute([':id' => $product_id]);
+                $product = $stmt->fetch();
+    
+                $items[] = array(
+                    'name' => $product['name'],
+                    'price' => $product['price']
+                );
+    
+                $total += $product['price'];
+            }
+    
+            return array('items' => $items, 'total' => $total);
         }
     }
 ?>
