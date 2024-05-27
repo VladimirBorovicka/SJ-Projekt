@@ -2353,3 +2353,41 @@ textarea.input {
   color: #ef233c !important;
   border-color: #ef233c !important;
 }
+
+
+.btn-remove-cart{
+  position: relative;
+  border: 2px solid transparent;
+  background-color: #15161D !important;
+  color: #FFF;
+  border-radius: 40px;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  margin-right: 10px;
+}
+
+.btn-remove-cart:hover {
+  background-color: #ef233c !important;
+  color: white !important;
+  border-color: ef233c !important;
+}
+
+.add-to-cart-btn-muted{
+  position: relative;
+  border: 2px solid transparent;
+  height: 40px;
+  padding: 0 30px;
+  background-color: #aaaaaa;
+  color: #FFF;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 40px;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+}
+
+.add-to-cart-btn-muted:hover {
+  background-color: #FFF;
+  color: #aaaaaa;
+  border-color: #aaaaaa;
+}
