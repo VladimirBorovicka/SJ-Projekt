@@ -1,11 +1,14 @@
 <?php
-require_once 'include/classes.php';
+require_once "include/classes/Cart.php";
+require_once "include/classes/Order.php";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+session_start();
+$cart = new Cart();
+$cartItems = $cart->getCartItemsIds();
+
+
+if (isset($_POST['order'])) {
 	session_start();
-
-	$cart = new Cart();
-	$cartItems = $cart->getCartItemsIds();
 
 	$order = new Order();
 	$order->createOrder($_SESSION['user_id'], $cartItems);
@@ -13,26 +16,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$cart->clearCart();
 	header('Location: library.php');
 }
+
+if (isset($_POST['remove'])) {
+	$item = $_POST['item'];
+	$cart->removeFromCart($item);
+	header('Location: checkout.php');
+}
+
+require_once 'include/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Electro - HTML Ecommerce Template</title>
- 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
- 		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
- 		<link type="text/css" rel="stylesheet" href="css/slick.css"/>
- 		<link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
- 		<link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
- 		<link rel="stylesheet" href="css/font-awesome.min.css">
- 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
-    </head>
 	<body>
 
 		<?php
-		include 'include/header.php';
+		include 'include/nav.php';
 		?>
 
 		<div class="section">
@@ -82,7 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							</div>
 							<div class="order-products">
 							<?php
-								$cart = new Cart();
 								$cartItems = $cart->getCartItems();
 								echo $cart->getCartItemsHtml($cartItems);
 							?>
@@ -94,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							<div class="order-col">
 								<div><strong>TOTAL</strong></div>
 								<?php
-								echo '<div><strong class="order-total">$' . $cartItems['total'] . '</strong></div>';
+								echo '<div><strong class="order-total">' . $cartItems['total'] . '€</strong></div>';
 								?>
 							</div>
 						</div>
@@ -129,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							</label>
 						</div>
 						<form action="checkout.php" method="post">
-							<button type="submit" class="primary-btn order-submit btn-main">Place order</button>
+							<button type="submit" class="primary-btn order-submit btn-main" name="order">Place order</button>
 						</form>
 					</div>
 				</div>
@@ -138,14 +133,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		<?php
 		include 'include/footer.php';
+		include 'include/scripts.php';
 		?>
-
-		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/slick.min.js"></script>
-		<script src="js/nouislider.min.js"></script>
-		<script src="js/jquery.zoom.min.js"></script>
-		<script src="js/main.js"></script>
 
 	</body>
 </html>
