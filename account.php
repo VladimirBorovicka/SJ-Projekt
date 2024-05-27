@@ -1,6 +1,5 @@
 <?php
-require_once "include/connectDB.php";
-require_once "include/classes.php";
+require_once "include/classes/Users.php";
 
 session_start();
 if (!isset($_SESSION['username'])) {
@@ -9,7 +8,6 @@ if (!isset($_SESSION['username'])) {
 
 $userData = new Users();
 $userData = $userData->getUserData($_SESSION['user_id']);
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'] ?? null;
@@ -21,27 +19,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $editUser = new Users();
     $editUser->editUser($username, $first_name, $last_name, $email, $password, $_SESSION['user_id']);
 }
+require_once "include/header.php";
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Electro - HTML Ecommerce Template</title>
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
-		<link type="text/css" rel="stylesheet" href="css/slick.css"/>
-		<link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
-		<link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
-		<link rel="stylesheet" href="css/font-awesome.min.css">
-		<link type="text/css" rel="stylesheet" href="css/style.css"/>
-</head>
-
 <body>
+
     <?php
-    include "include/header.php";
+    include "include/nav.php";
     ?>
 
     <div class="container-login">
@@ -83,5 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php
     include "include/footer.php";
     ?>
+
 </body>
 </html>

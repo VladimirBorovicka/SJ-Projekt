@@ -1,5 +1,5 @@
 <?php
-require_once 'include/classes.php';
+require_once "include/classes/Products.php";
 
 if (isset($_GET['id'])) {
     $delete = new Products();
