@@ -1,7 +1,7 @@
 <?php
 class Database {
     private $host = 'localhost';
-    private $db   = 'store2';
+    private $db   = 'store';
     private $user = 'root';
     private $pass = '';
     private $charset = 'utf8mb4';
