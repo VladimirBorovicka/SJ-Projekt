@@ -32,20 +32,7 @@ class Library extends Database{
             echo '<div class="product-body">';
             echo '<p class="product-category">' .$row['category'] . '</p>';
             echo '<h3 class="product-name"><a href="#">' . $row['name'] . '</a></h3>';
-            echo '<h4 class="product-price">€' . $row['price'];
-            if (isset($row['old_price']) && !empty($row['old_price'])) {
-                echo ' <del class="product-old-price">€' . $row['old_price'] . '</del>';
-            }
             echo '</h4>';
-            echo '<div class="product-rating">';
-            for ($i = 0; $i < 5; $i++) {
-                if ($i < $row['rating']) {
-                    echo '<i class="fa fa-star"></i>';
-                } else {
-                    echo '<i class="fa fa-star-o"></i>';
-                }
-            }
-            echo '</div>';
             echo '<div class="product-btns">';
             echo '</div></div>';
             echo '</div></div>';
