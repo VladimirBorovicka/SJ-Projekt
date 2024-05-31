@@ -18,12 +18,9 @@
                     <div class="footer">
                         <h3 class="footer-title">Categories</h3>
                         <ul class="footer-links">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#">Store</a></li>
-                            <li><a href="#">Library</a></li>
-                            <li><a href="#">Categories</a></li>
-                            <li><a href="#">Hot Deals</a></li>
-                            <li><a href="#">New</a></li>
+                            <li class="active"><a href="./index.php">Home</a></li>
+                            <li><a href="./store.php">Store</a></li>
+                            <li><a href="./library.php">Library</a></li>
                         </ul>
                     </div>
                 </div>
@@ -45,9 +42,8 @@
                     <div class="footer">
                         <h3 class="footer-title">Service</h3>
                         <ul class="footer-links">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">View Cart</a></li>
-                            <li><a href="#">Wishlist</a></li>
+                            <li><a href="./account.php">My Account</a></li>
+                            <li><a href="./checkout.php">View Cart</a></li>
                             <li><a href="#">Help</a></li>
                         </ul>
                     </div>
