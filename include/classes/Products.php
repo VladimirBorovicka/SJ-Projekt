@@ -26,6 +26,7 @@ class Products extends Database{
         
         if ($result->rowCount() > 0) {
             while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                echo '<a href="product.php?id=' . $row['id'] . '">';
                 echo '<div class="col-md-4 col-xs-6">';
                 echo '<div class="product">';
                 echo '<div class="product-img">';
@@ -86,7 +87,7 @@ class Products extends Database{
                     echo '<a href="login.php"><button type="button" class="login-btn">Login to Purchase</button></a>';
                 }
                 
-                echo '</div></div></div>';
+                echo '</div></div></div></a>';
             }
         } else {
             echo "No products found";
@@ -111,7 +112,22 @@ class Products extends Database{
             $products[] = $row;
         }
 
-        return $products;
+        foreach ($products as $product) {
+            echo '<div class="product-widget">';
+            echo '<div class="product-img">';
+            echo '<img src="' . $product['image'] . '" alt="">';
+            echo '</div>';
+            echo '<div class="product-body">';
+            echo '<p class="product-category">' . $product['category'] . '</p>';
+            echo '<h3 class="product-name"><a href="#">' . $product['name'] . '</a></h3>';
+            echo '<h4 class="product-price">' . $product['price'] . '€';
+            if (isset($product['old_price']) && !empty($product['old_price'])) {
+                echo '<del class="product-old-price">' . $product['old_price'] . '€</del>';
+            }
+            echo '</h4>';
+            echo '</div>';
+            echo '</div>';
+        }
     }
 
     public function getProduct($id) {
@@ -181,21 +197,26 @@ class Products extends Database{
                 echo '  <div class="product-body">';
                 echo '    <p class="product-category">'.$row['category'].'</p>';
                 echo '    <h3 class="product-name"><a href="#">'.$row['name'].'</a></h3>';
-                echo '    <h4 class="product-price">$'.$row['price'].' <del class="product-old-price">$'.$row['old_price'].'</del></h4>';
+                echo '    <h4 class="product-price">'.$row['price'].'€ <del class="product-old-price">'.$row['old_price'].'€</del></h4>';
                 echo '    <div class="product-rating">';
-                for ($i = 0; $i < 5; $i++) {
-                    if ($i < $row['rating']) {
-                        echo '      <i class="fa fa-star"></i>';
-                    } else {
-                        echo '      <i class="fa fa-star-o"></i>';
-                    }
-                }
+                $stars = new Products();
+                $stars = $this->getStars($row['rating']);
                 echo '    </div>';
                 echo '  </div>';
                 echo '</div>';
             }
         } else {
             echo "No products found";
+        }
+    }
+
+    public function getStars($productRating) {
+        for ($i = 1; $i <= 5; $i++) {
+            if ($i <= $productRating) {
+                echo '<i class="fa fa-star"></i>';
+            } else {
+                echo '<i class="fa fa-star-o"></i>';
+            }
         }
     }
 }
