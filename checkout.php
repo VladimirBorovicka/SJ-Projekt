@@ -43,16 +43,18 @@ require_once 'include/header.php';
 							</div>
 							<?php
 								$user = new Users();
-								$userData = $user->getUserData($_SESSION['user_id']);
+								if (isset($_SESSION['user_id'])) {
+									$userData = $user->getUserData($_SESSION['user_id']);
+								}
 							?>
 							<div class="form-group">
-								<input class="input" type="text" name="first-name" placeholder="First Name" value="<?php echo $userData["first_name"]; ?>" required>
+								<input class="input" type="text" name="first-name" placeholder="First Name" value="<?php if (isset($_SESSION['user_id'])) echo htmlspecialchars($userData["first_name"]); ?>" required>
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="last-name" placeholder="Last Name" value="<?php echo $userData["surname"]; ?>"required>
+								<input class="input" type="text" name="last-name" placeholder="Last Name" value="<?php if (isset($_SESSION['user_id'])) echo htmlspecialchars($userData["surname"]); ?>"required>
 							</div>
 							<div class="form-group">
-								<input class="input" type="email" name="email" placeholder="Email" value="<?php echo $userData["email"]; ?>"required>
+								<input class="input" type="email" name="email" placeholder="Email" value="<?php if (isset($_SESSION['user_id'])) echo htmlspecialchars($userData["email"]); ?>"required>
 							</div>
 							<div class="form-group">
 								<input class="input" type="text" name="address" placeholder="Address" required> 

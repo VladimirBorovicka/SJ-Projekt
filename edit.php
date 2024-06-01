@@ -1,6 +1,11 @@
 <?php
 require_once "include/classes/Products.php";
 
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: index.php');
+}
+
 $product = null;
 if (isset($_GET['id'])) {
     $productObj = new Products();
