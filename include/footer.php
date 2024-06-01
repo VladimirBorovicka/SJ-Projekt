@@ -2,7 +2,7 @@
     <div class="section">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-xs-6">
+                <div class="col-md-6 col-xs-6 text-center">
                     <div class="footer">
                         <h3 class="footer-title">About Us</h3>
                         <p>Unlock endless gaming adventures with our PC game key store. Instant purchase, instant play. Elevate your gaming now!</p>
@@ -16,7 +16,7 @@
 
                 <div class="clearfix visible-xs"></div>
 
-                <div class="col-md-3 col-xs-6">
+                <div class="col-md-3 col-xs-6 text-center">
                     <div class="footer">
                         <h3 class="footer-title">Categories</h3>
                         <ul class="footer-links">
@@ -30,7 +30,7 @@
                 <div class="clearfix visible-xs"></div>
 
 
-                <div class="col-md-3 col-xs-6">
+                <div class="col-md-3 col-xs-6 text-center">
                     <div class="footer">
                         <h3 class="footer-title">Service</h3>
                         <ul class="footer-links">
@@ -42,6 +42,7 @@
             </div>
         </div>
     </div>
+</div>
 
     <div id="bottom-footer" class="section">
         <div class="container">
