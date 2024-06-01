@@ -86,6 +86,9 @@ class Users extends Database {
         $stmt->bindParam(':password', $hashed_password);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
+
+        $_SESSION['username'] = $username;
+        
         header("Location: account.php");
     }
 
