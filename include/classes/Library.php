@@ -23,20 +23,20 @@ class Library extends Database{
             if (count($result) > 0) {
                 foreach ($result as $row) {
                     echo '<div class="col-md-4 col-xs-6">';
-            echo '<div class="product">';
-            echo '<div class="product-img">';
-            echo '<img src="' . $row['image'] . '" alt="">';
-            echo '<div class="product-label">';
-            echo '</div>';
-            echo '</div>';
-            echo '<div class="product-body">';
-            echo '<p class="product-category">' .$row['category'] . '</p>';
-            echo '<h3 class="product-name"><a href="#">' . $row['name'] . '</a></h3>';
-            echo '</h4>';
-            echo '<div class="product-btns">';
-            echo '</div></div>';
-            echo '</div></div>';
-        }
+                    echo '<div class="product">';
+                    echo '<div class="product-img">';
+                    echo '<img src="' . $row['image'] . '" alt="">';
+                    echo '<div class="product-label">';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="product-body">';
+                    echo '<p class="product-category">' .$row['category'] . '</p>';
+                    echo '<h3 class="product-name"><a href="#">' . $row['name'] . '</a></h3>';
+                    echo '</h4>';
+                    echo '<div class="product-btns">';
+                    echo '</div></div>';
+                    echo '</div></div>';
+                }
             } else {
                 echo "You dont own any games yet!";
             }
