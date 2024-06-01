@@ -1,6 +1,7 @@
 <?php
 require_once "include/classes/Cart.php";
 require_once "include/classes/Order.php";
+require_once "include/classes/Users.php";
 
 session_start();
 $cart = new Cart();
@@ -34,20 +35,24 @@ require_once 'include/header.php';
 		<div class="section">
 			<div class="container">
 				<div class="row">
-
+				<form action="checkout.php" method="post">
 					<div class="col-md-7">
 						<div class="billing-details">
 							<div class="section-title">
 								<h3 class="title">Billing address</h3>
 							</div>
+							<?php
+								$user = new Users();
+								$userData = $user->getUserData($_SESSION['user_id']);
+							?>
 							<div class="form-group">
-								<input class="input" type="text" name="first-name" placeholder="First Name" required>
+								<input class="input" type="text" name="first-name" placeholder="First Name" value="<?php echo $userData["first_name"]; ?>" required>
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="last-name" placeholder="Last Name" required>
+								<input class="input" type="text" name="last-name" placeholder="Last Name" value="<?php echo $userData["surname"]; ?>"required>
 							</div>
 							<div class="form-group">
-								<input class="input" type="email" name="email" placeholder="Email" required>
+								<input class="input" type="email" name="email" placeholder="Email" value="<?php echo $userData["email"]; ?>"required>
 							</div>
 							<div class="form-group">
 								<input class="input" type="text" name="address" placeholder="Address" required>
@@ -95,7 +100,7 @@ require_once 'include/header.php';
 						</div>
 						<div class="payment-method">
 							<div class="input-radio">
-								<input type="radio" name="payment" id="payment-1">
+								<input type="radio" name="payment" id="payment-1" checked>
 								<label for="payment-1">
 									<span></span>
 									Direct Bank Transfer
@@ -123,8 +128,9 @@ require_once 'include/header.php';
 								I've read and accept the <a href="#">terms & conditions</a>
 							</label>
 						</div>
-						<form action="checkout.php" method="post">
+						<?php if ($cartItems['total'] > 0) { ?>
 							<button type="submit" class="primary-btn order-submit btn-main" name="order">Place order</button>
+						<?php } ?>
 						</form>
 					</div>
 				</div>
