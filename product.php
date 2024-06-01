@@ -48,29 +48,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 								</div>
 							<div>
-								<h3 class="product-price"><?php echo $product["price"] . "€" ?> <del class="product-old-price"><?php echo $product["old_price"] . "€" ?></del></h3>
+								<h3 class="product-price"><?php echo $product["price"] . "€" ?> 
+								<?php if ($product["old_price"] != 0): ?>
+									<del class="product-old-price"><?php echo $product["old_price"] . "€" ?></del></h3>
+								<?php endif; ?>
 							</div>
 							<p class="text-black"><?php echo substr($product["description"], 0, 200) . "..."?></p>
 	
 								<div class="add-to-cart">
 									<form method="post">
-										<input type="hidden" name="product_id" value="<?php echo $product["id"]?>">
 										<?php 
+										    if(isset($_SESSION['user_id'])) {
 											$productObj = new Products();
 											$ownedGames = $productObj->getOwnedGames($_SESSION['user_id']);
+										?>
+											<input type="hidden" name="product_id" value="<?php echo $product["id"]?>">
+										<?php
 											if(in_array($product["id"], $_SESSION['cart'])): 
 										?>
-											<button type="button" disabled class="add-to-cart-btn-muted"><i class="fa fa-check"></i> Already in cart</button>
+											    <button type="button" disabled class="add-to-cart-btn-muted"><i class="fa fa-check"></i> Already in cart</button>
 										<?php 
 											elseif(in_array($product["id"], $ownedGames)): 
 										?>
-											<button type="button" disabled class="add-to-cart-btn-muted"><i class="fa fa-check"></i> Already owned</button>
+											    <button type="button" disabled class="add-to-cart-btn-muted"><i class="fa fa-check"></i> Already owned</button>
 										<?php 
 											else: 
 										?>
-											<button type="submit" name="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+											    <button type="submit" name="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
 										<?php 
 											endif; 
+										    } else {
+										?>
+											<a href="login.php"><button type="button" class="login-btn">Login to Purchase</button></a>
+										<?php
+										    }
 										?>
 									</form>
 								</div>

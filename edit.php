@@ -65,7 +65,7 @@ require_once "include/header.php";
                         </div>
                         <div class="form-group">
                             <label for="old_price">Old Price</label>
-                            <input type="number" class="form-control" id="old_price" name="old_price" value="<?php echo $product['old_price']; ?>" required>
+                            <input type="number" class="form-control" id="old_price" name="old_price" value="<?php echo $product['old_price']; ?>">
                         </div>
                         <div class="form-group">
                             <label for="rating">Rating</label>

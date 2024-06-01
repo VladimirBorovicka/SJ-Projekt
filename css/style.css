@@ -2339,6 +2339,12 @@ textarea.input {
   transition: 0.2s all;
 }
 
+.login-btn:hover {
+  background-color: #FFF;
+  color: #ef233c;
+  border-color: #ef233c;
+}
+
 .btn-main {
   position: relative;
   border: 2px solid transparent !important;
