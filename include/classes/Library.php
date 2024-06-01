@@ -22,6 +22,7 @@ class Library extends Database{
 
             if (count($result) > 0) {
                 foreach ($result as $row) {
+                    echo '<a href="product.php?id=' . $row['game_id'] . '">';
                     echo '<div class="col-md-4 col-xs-6">';
                     echo '<div class="product">';
                     echo '<div class="product-img">';
@@ -36,6 +37,7 @@ class Library extends Database{
                     echo '<div class="product-btns">';
                     echo '</div></div>';
                     echo '</div></div>';
+                    echo '</a>';
                 }
             } else {
                 echo "You dont own any games yet!";
