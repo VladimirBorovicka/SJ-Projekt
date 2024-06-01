@@ -9,7 +9,8 @@ if (!isset($_SESSION['username'])) {
 $userData = new Users();
 $userData = $userData->getUserData($_SESSION['user_id']);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])){
     $username = $_POST['username'] ?? null;
     $first_name = $_POST['first_name'] ?? null;
     $last_name = $_POST['last_name'] ?? null;
@@ -19,6 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $editUser = new Users();
     $editUser->editUser($username, $first_name, $last_name, $email, $password, $_SESSION['user_id']);
 }
+
+if (isset($_POST['delete'])) {
+    $deleteUser = new Users();
+    $deleteUser->deleteUser($_SESSION['user_id']);
+}
+
 require_once "include/header.php";
 ?>
 <body>
@@ -59,6 +66,11 @@ require_once "include/header.php";
                 <div class="form-group">
                     <input type="submit" class="btn btn-main" value="Save Changes" name="submit">
                 </div>
+                <?php if ($_SESSION['role'] != 'admin'): ?>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-main" value="Delete Account" name="delete" onclick="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
+                </div>
+                <?php endif; ?>
             </form>
         </div>
     </div>
