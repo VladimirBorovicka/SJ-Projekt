@@ -14,6 +14,8 @@
                     </div>
                 </div>
 
+                <div class="clearfix visible-xs"></div>
+
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
                         <h3 class="footer-title">Categories</h3>
@@ -27,16 +29,6 @@
 
                 <div class="clearfix visible-xs"></div>
 
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">Information</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
-                        </ul>
-                    </div>
-                </div>
 
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
@@ -44,7 +36,6 @@
                         <ul class="footer-links">
                             <li><a href="./account.php">My Account</a></li>
                             <li><a href="./checkout.php">View Cart</a></li>
-                            <li><a href="#">Help</a></li>
                         </ul>
                     </div>
                 </div>
