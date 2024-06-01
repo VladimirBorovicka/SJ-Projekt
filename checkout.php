@@ -55,7 +55,7 @@ require_once 'include/header.php';
 								<input class="input" type="email" name="email" placeholder="Email" value="<?php echo $userData["email"]; ?>"required>
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="address" placeholder="Address" required>
+								<input class="input" type="text" name="address" placeholder="Address" required> 
 							</div>
 							<div class="form-group">
 								<input class="input" type="text" name="city" placeholder="City" required>

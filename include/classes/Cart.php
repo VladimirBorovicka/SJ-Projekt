@@ -24,6 +24,7 @@ class Cart extends Database{
             $product = $stmt->fetch();
 
             $items[] = array(
+                'id' => $product_id,
                 'name' => $product['name'],
                 'price' => $product['price']
             );
@@ -37,11 +38,8 @@ class Cart extends Database{
     function getCartItemsHtml($cartItems) {
         foreach ($cartItems['items'] as $key => $item) {
             echo '<div class="order-col">';
-            echo '<form action="checkout.php" method="post">';
-            echo '<input type="hidden" name="item" value="' . $key . '">';
-            echo '<button type="submit" class="text-black btn-remove-cart" name="remove"><i class="fa fa-trash"></i></button>';
+            echo '<a href="remove_from_cart.php?index=' . $key . '" class="text-black btn-remove-cart"><i class="fa fa-trash"></i></a>';
             echo ' 1x ' . $item['name'];
-            echo '</form>';
             echo '<div>' . $item['price'] . '€</div>';
             echo '</div>';
         }
@@ -49,7 +47,6 @@ class Cart extends Database{
         echo '<div class="order-col">';
         echo '</div>';
     }
-
 
     public function getCartItemsIds() {
         return $_SESSION['cart'];
