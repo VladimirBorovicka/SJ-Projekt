@@ -138,8 +138,8 @@ class Products extends Database{
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function editProduct($id, $name, $price, $old_price, $rating, $category, $image,) {
-        $sql = "UPDATE products SET name = :name, price = :price, old_price = :old_price, rating = :rating, image = :image, category = :category WHERE id = :id";
+    public function editProduct($id, $name, $price, $old_price, $rating, $category, $image, $description) {
+        $sql = "UPDATE products SET name = :name, price = :price, old_price = :old_price, rating = :rating, image = :image, category = :category, description = :description WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':price', $price);
@@ -147,6 +147,7 @@ class Products extends Database{
         $stmt->bindParam(':rating', $rating);
         $stmt->bindParam(':image', $image);
         $stmt->bindParam(':category', $category);
+        $stmt->bindParam(':description', $description);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         header("Location: store.php");
@@ -166,8 +167,8 @@ class Products extends Database{
         header("Location: store.php");
     }
 
-    public function createProduct($name, $price, $old_price, $rating, $category, $image) {
-        $sql = "INSERT INTO products (name, price, old_price, rating, category, image) VALUES (:name, :price, :old_price, :rating, :category, :image)";
+    public function createProduct($name, $price, $old_price, $rating, $category, $image, $description) {
+        $sql = "INSERT INTO products (name, price, old_price, rating, category, image, description) VALUES (:name, :price, :old_price, :rating, :category, :image, :description)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':price', $price);
@@ -175,6 +176,7 @@ class Products extends Database{
         $stmt->bindParam(':rating', $rating);
         $stmt->bindParam(':image', $image);
         $stmt->bindParam(':category', $category);
+        $stmt->bindParam(':description', $description);
         $stmt->execute();
         header("Location: store.php");
     }
