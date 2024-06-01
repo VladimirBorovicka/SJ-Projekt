@@ -2396,3 +2396,29 @@ textarea.input {
   color: #aaaaaa;
   border-color: #aaaaaa;
 }
+
+.custom-cont{
+  margin-top: 100px;
+  margin-bottom: 100px;
+  background-color: #15161d;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 5px;
+  border-bottom: solid 4px #ef233c;
+}
+
+.custom-cont label, p, a, h2{
+  color:#ffffff;
+}
+
+.custom-cont img {
+  color: white;
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+}
