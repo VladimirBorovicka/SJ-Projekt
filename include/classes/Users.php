@@ -88,5 +88,20 @@ class Users extends Database {
         $stmt->execute();
         header("Location: account.php");
     }
+
+    public function deleteUser($id) {
+        $sql = "DELETE FROM user_games WHERE user_id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        $sql = "DELETE FROM users WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        $logout = new Users();
+        $logout->logout();
+    }
 }
 ?>
