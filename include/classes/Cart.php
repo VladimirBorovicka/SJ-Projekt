@@ -35,25 +35,19 @@ class Cart extends Database{
     }
 
     function getCartItemsHtml($cartItems) {
-        $output = '';
-
         foreach ($cartItems['items'] as $key => $item) {
-            $output .= '<div class="order-col">';
-            $output .= '<form action="checkout.php" method="post">';
-            $output .= '<input type="hidden" name="item" value="' . $key . '">';
-            $output .= '<button type="submit" class="text-black btn-remove-cart" name="remove"><i class="fa fa-trash"></i></button>';
-            $output .= ' 1x ' . $item['name'];
-            $output .= '</form>';
-            $output .= '<div>$' . $item['price'] . '</div>';
-            $output .= '</div>';
+            echo '<div class="order-col">';
+            echo '<form action="checkout.php" method="post">';
+            echo '<input type="hidden" name="item" value="' . $key . '">';
+            echo '<button type="submit" class="text-black btn-remove-cart" name="remove"><i class="fa fa-trash"></i></button>';
+            echo ' 1x ' . $item['name'];
+            echo '</form>';
+            echo '<div>' . $item['price'] . '€</div>';
+            echo '</div>';
         }
 
-        $output .= '<div class="order-col">';
-        $output .= '<div><strong>TOTAL</strong></div>';
-        $output .= '<div><strong class="order-total">$' . $cartItems['total'] . '</strong></div>';
-        $output .= '</div>';
-
-        return $output;
+        echo '<div class="order-col">';
+        echo '</div>';
     }
 
 

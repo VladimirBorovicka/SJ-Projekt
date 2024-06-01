@@ -79,7 +79,7 @@ require_once 'include/header.php';
 							<div class="order-products">
 							<?php
 								$cartItems = $cart->getCartItems();
-								echo $cart->getCartItemsHtml($cartItems);
+								$cart->getCartItemsHtml($cartItems);
 							?>
 							</div>
 							<div class="order-col">
