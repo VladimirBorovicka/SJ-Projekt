@@ -58,11 +58,11 @@ require_once "include/header.php";
                         </div>
                         <div class="form-group">
                             <label for="price">Price</label>
-                            <input type="number" class="form-control" id="price" name="price" required>
+                            <input type="step" class="form-control" id="price" name="price" required>
                         </div>
                         <div class="form-group">
                             <label for="old_price">Old Price</label>
-                            <input type="number" class="form-control" id="old_price" name="old_price">
+                            <input type="step" class="form-control" id="old_price" name="old_price">
                         </div>
                         <div class="form-group">
                             <label for="rating">Rating</label>
