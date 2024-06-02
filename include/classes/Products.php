@@ -199,7 +199,11 @@ class Products extends Database{
                 echo '  <div class="product-body">';
                 echo '    <p class="product-category">'.$row['category'].'</p>';
                 echo '    <h3 class="product-name"><a href="#">'.$row['name'].'</a></h3>';
-                echo '    <h4 class="product-price">'.$row['price'].'€ <del class="product-old-price">'.$row['old_price'].'€</del></h4>';
+                echo '<h4 class="product-price">€' . $row['price'];
+                if (isset($row['old_price']) && !empty($row['old_price'])) {
+                    echo ' <del class="product-old-price">€' . $row['old_price'] . '</del>';
+                }
+                echo '</h4>';
                 echo '    <div class="product-rating">';
                 $stars = new Products();
                 $stars = $this->getStars($row['rating']);
